@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from pathlib import Path
 
@@ -152,5 +154,11 @@ def create_app(config_class: type[Config] = Config) -> Flask:
 
 if __name__ == "__main__":
     application = create_app()
-    application.run(host="0.0.0.0", port=5000, debug=True)
+    debug_mode = os.environ.get("FLASK_DEBUG", "").lower() in {"1", "true", "yes"}
+    application.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=debug_mode,
+        use_reloader=debug_mode,
+    )
 

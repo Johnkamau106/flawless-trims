@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import re
 import tempfile
 from pathlib import Path
-from typing import Optional
+from typing import Dict, List, Optional
 
 YOUTUBE_SHORTS_SI = re.compile(r"([?&])si=[^&#]+")
 
@@ -35,7 +37,7 @@ def create_tmp_dir(base_dir: str) -> tempfile.TemporaryDirectory:
     return tempfile.TemporaryDirectory(dir=base_dir)
 
 
-def parse_formats(formats: list[dict]) -> dict:
+def parse_formats(formats: List[Dict]) -> Dict[str, List[Dict]]:
     video_formats, audio_formats = [], []
     seen_labels = set()
 
