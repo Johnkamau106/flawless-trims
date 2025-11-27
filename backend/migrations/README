@@ -1,0 +1,3 @@
+This directory contains Alembic migration scripts managed via Flask-Migrate.
+Use `flask db migrate` to create new revisions and `flask db upgrade` to apply them.
+
